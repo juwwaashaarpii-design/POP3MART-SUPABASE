@@ -1,19 +1,21 @@
 import { supabase } from "./supabase.js";
-import { requireRole, escapeHTML, rupiah, showToast } from "./common.js";
+import { requireRole, showToast } from "./common.js";
+import { productCard } from "./product-ui.js";
 const context = await requireRole("buyer");
 if (context) {
-  const [{ data: products, error }, { count: wishlistCount }] = await Promise.all([
-    supabase.from("products").select("id,name,category,price,stock,image_url").eq("is_active", true).order("created_at", { ascending: false }).limit(4),
-    supabase.from("wishlist_items").select("id", { count: "exact", head: true }).eq("user_id", context.user.id)
+  const [pResult, wishlistResult, categoriesResult] = await Promise.all([
+    supabase.from("products").select("id,name,category,price,stock,image_url", { count: "exact" }).eq("is_active", true).order("created_at", { ascending: false }).limit(4),
+    supabase.from("wishlist_items").select("id", { count: "exact", head: true }).eq("user_id", context.user.id),
+    supabase.from("products").select("category").eq("is_active", true).limit(2000)
   ]);
-  if (error) showToast("Gagal memuat katalog: " + error.message, "error");
-  document.querySelector("#wishlist-count").textContent = wishlistCount ?? 0;
-  document.querySelector("#catalog-count").textContent = products?.length ?? 0;
+  if (pResult.error) showToast("Gagal memuat katalog: " + pResult.error.message, "error");
+  if (wishlistResult.error) showToast("Gagal memuat jumlah wishlist: " + wishlistResult.error.message, "error");
+  document.querySelector("#wishlist-count").textContent = wishlistResult.count ?? "–";
+  document.querySelector("#catalog-count").textContent = pResult.count ?? "–";
+  document.querySelector("#category-count").textContent = categoriesResult.error ? "–" : new Set((categoriesResult.data || []).map(p => p.category || "Collectible")).size;
   const host = document.querySelector("#latest-products");
-  if (!products?.length) host.innerHTML = `<div class="empty-state">Belum ada figure. Admin dapat menambahkan produk melalui Admin Dashboard.</div>`;
-  else host.innerHTML = products.map(p => `
-    <article class="product-card">
-      ${p.image_url ? `<img class="product-image" src="${escapeHTML(p.image_url)}" alt="${escapeHTML(p.name)}">` : `<div class="product-image product-placeholder"><i class="bi bi-box-seam"></i></div>`}
-      <div class="product-card-body"><span class="eyebrow">${escapeHTML(p.category || "Collectible")}</span><h3>${escapeHTML(p.name)}</h3><div class="product-meta"><strong>${rupiah(p.price)}</strong><span class="stock-pill ${p.stock > 0 ? "in-stock" : "out-stock"}">${p.stock > 0 ? `Stok ${p.stock}` : "Habis"}</span></div></div>
-    </article>`).join("");
+  const products = pResult.data || [];
+  host.innerHTML = products.length
+    ? products.map(p => productCard(p)).join("")
+    : `<div class="empty-state">Belum ada figure aktif di katalog. Admin dapat menambahkan produk di halaman Manage Figures.</div>`;
 }

@@ -220,3 +220,148 @@ body.reduce-animations .product-card:hover,body.reduce-animations .stat-card:hov
 }
 @media(max-width:420px){.buyer-page .footer-top{grid-template-columns:1fr 1fr;gap:22px 12px}.buyer-page .footer-brand{grid-column:1/-1}.buyer-page .footer-social{grid-column:1/-1}.buyer-page .product-card .card-actions{flex-wrap:wrap}.buyer-page .product-card .card-actions .comic-btn:not(.heart-button){flex:1 1 100%}.buyer-page .collections-grid{grid-template-columns:1fr}.buyer-page .stats-grid{grid-template-columns:1fr 1fr}.buyer-page .stat-number{font-size:21px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.buyer-page *,.buyer-page *::before,.buyer-page *::after{transition:none!important;animation:none!important}.buyer-page .product-card:hover,.buyer-page .stat-card:hover{transform:none!important}}
+
+/* ==========================================================
+   NOV 2026 UPGRADE — COMIC AUTH, ADMIN + CHECKOUT / TRACKING
+   ========================================================== */
+[hidden]{display:none!important}
+/* Authentication now shares the interactive comic weight of the buyer UI */
+.auth-shell{transition:transform .28s ease,box-shadow .28s ease;border-width:4px;box-shadow:9px 9px 0 var(--comic-black)}
+.auth-shell:hover{transform:translate(-3px,-4px);box-shadow:13px 14px 0 var(--comic-black)}
+.auth-art{background:var(--comic-blue);border-right:4px solid var(--comic-black)}
+.auth-art:after{transition:transform .35s ease,text-shadow .35s ease}
+.auth-shell:hover .auth-art:after{transform:rotate(-8deg) translate(-7px,-6px);text-shadow:11px 11px 0 var(--comic-black)}
+.auth-form-wrap{background:var(--comic-white)}
+.auth-form-wrap h2{color:var(--comic-black)}
+.auth-form-wrap .field input{border:3px solid var(--comic-black);transition:transform .18s ease,box-shadow .2s ease,border-color .2s ease}
+.auth-form-wrap .field input:hover{box-shadow:3px 3px 0 var(--comic-yellow)}
+.auth-form-wrap .field input:focus{box-shadow:5px 5px 0 var(--comic-yellow);transform:translate(-2px,-2px)}
+.auth-form-wrap .comic-btn{border-width:3px;min-height:49px;transition:transform .19s ease,box-shadow .19s ease,filter .2s ease}
+.auth-form-wrap .comic-btn:hover{transform:translate(-3px,-4px);box-shadow:7px 7px 0 var(--comic-black);filter:saturate(1.1)}
+.password-input-wrap{position:relative;width:100%}
+.password-input-wrap>input{padding-right:56px!important}
+.password-eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:43px;height:40px;border:0;background:transparent;border-radius:4px;color:var(--comic-blue);font-size:21px;display:grid;place-items:center;transition:background .2s ease,transform .2s ease}
+.password-eye:hover{background:var(--comic-yellow);transform:translateY(-53%) rotate(-5deg)}
+.password-eye:focus-visible{outline:3px solid var(--comic-yellow)}
+
+/* Admin mirrors Buyer sidebar and floating comic cards */
+.admin-page .sidebar{width:255px;background:var(--comic-blue);padding:24px 15px;overflow-y:auto;scrollbar-width:thin;box-shadow:6px 0 0 var(--comic-black)}
+.admin-page .sidebar .logo{display:block;margin:0 0 35px;font:32px Impact,'Arial Black',sans-serif}
+.admin-page .menu-title{font-size:12px;color:var(--comic-yellow);letter-spacing:2.3px;margin:22px 12px 12px}
+.admin-page .sidebar .nav-link{padding:12px 15px;min-height:50px;margin-bottom:4px;border:3px solid transparent;border-radius:5px;color:white;gap:14px;font-weight:900;box-shadow:none;
+ transition:background-color .38s ease 1.05s,color .38s ease 1.05s,border-color .38s ease 1.05s,transform .24s ease .05s,box-shadow .28s ease .65s}
+.admin-page .sidebar .nav-link i{color:var(--comic-yellow);width:20px;font-size:19px;transition:color .3s ease 1.05s}
+.admin-page .sidebar .nav-link:hover:not(.active){background:var(--comic-yellow);color:var(--comic-black);border-color:var(--comic-black);transform:translateX(4px);box-shadow:4px 4px 0 var(--comic-black)}
+.admin-page .sidebar .nav-link:hover:not(.active) i{color:var(--comic-black)}
+.admin-page .sidebar .nav-link.active{background:var(--comic-yellow);color:var(--comic-black);border-color:var(--comic-black);box-shadow:4px 4px 0 var(--comic-black)}
+.admin-page .sidebar .nav-link.active i{color:var(--comic-black)}
+.admin-page .sidebar .nav-link:focus-visible{transition-delay:0s;background:var(--comic-yellow);color:var(--comic-black)}
+.admin-page .main{margin-left:255px;padding:25px 28px 38px}
+.admin-page .topbar{min-height:83px;background:var(--comic-white);border:4px solid var(--comic-black);box-shadow:6px 6px 0 var(--comic-black);padding:12px 16px;margin-bottom:29px}
+.admin-page .topbar h1{font-size:30px}
+.admin-page .user-chip{border-width:3px;box-shadow:4px 4px 0 var(--comic-black);transition:transform .2s,box-shadow .2s}
+.admin-page .user-chip:hover{transform:translate(-2px,-3px);box-shadow:6px 7px 0 var(--comic-black)}
+.admin-page .welcome-banner{border:5px solid var(--comic-black);box-shadow:7px 7px 0 var(--comic-black);margin-bottom:30px}
+.admin-page .stats-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:15px;margin-bottom:29px}
+.admin-page .stat-card{min-width:0;border:4px solid var(--comic-black);box-shadow:5px 5px 0 var(--comic-black);padding:17px;transition:transform .22s ease,box-shadow .22s ease}
+.admin-page .stat-card:hover{transform:translate(-4px,-5px) rotate(-.5deg);box-shadow:9px 10px 0 var(--comic-black)}
+.admin-page .panel{border:4px solid var(--comic-black);box-shadow:6px 6px 0 var(--comic-black);padding:23px;margin-bottom:30px;transition:box-shadow .2s ease}
+.admin-page .panel:hover{box-shadow:9px 9px 0 var(--comic-black)}
+.admin-page .data-table tbody tr{transition:background .25s ease}
+.admin-page .data-table tbody tr:hover{background:#ffefb3}
+.admin-page .comic-btn,.admin-page .small-btn{transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+.admin-page .comic-btn:hover,.admin-page .small-btn:hover{transform:translate(-3px,-4px);box-shadow:6px 6px 0 var(--comic-black)}
+.admin-page .field input:hover,.admin-page .field textarea:hover,.admin-page .field select:hover{box-shadow:3px 3px 0 var(--comic-yellow)}
+.admin-page .field input:focus,.admin-page .field textarea:focus,.admin-page .field select:focus{box-shadow:5px 5px 0 var(--comic-yellow)}
+.admin-page .sidebar-bottom{border-top:1px solid rgba(255,255,255,.2);padding-top:9px}
+.admin-page .mini-order-list{display:grid;gap:8px}.admin-page .mini-order{display:flex;align-items:center;justify-content:space-between;gap:9px;border:2px solid var(--comic-black);padding:12px;background:#fff;transition:transform .2s,background .2s}
+.admin-page .mini-order:hover{background:#fff1bc;transform:translateX(4px)}
+.admin-menu-toggle{display:none;align-items:center;justify-content:center;background:var(--comic-yellow);border:3px solid var(--comic-black);height:39px;width:43px;font-size:23px}
+.admin-menu-scrim{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:100}
+.admin-page .footer-note{text-align:center}
+/* Checkout + order tracking */
+.checkout-layout{display:grid;grid-template-columns:minmax(200px,.8fr) minmax(300px,1.2fr);gap:25px;align-items:start}
+.checkout-product{border:3px solid var(--comic-black);background:white;padding:18px;box-shadow:5px 5px 0 var(--comic-black);transition:transform .22s,box-shadow .22s}
+.checkout-product:hover{transform:translate(-3px,-4px);box-shadow:8px 9px 0 var(--comic-black)}
+.checkout-product img{width:100%;max-height:310px;aspect-ratio:1;object-fit:cover;border:2px solid var(--comic-black)}
+.checkout-product h3{font-size:26px;margin:12px 0 3px}.checkout-product p{font-size:13px;font-weight:800;color:#555}.checkout-price{font-size:25px;color:var(--comic-red)}
+.checkout-form{background:#fff;border:3px solid var(--comic-black);padding:20px;box-shadow:5px 5px 0 var(--comic-black)}
+.checkout-form .field input,.checkout-form .field select,.checkout-form .field textarea{border:3px solid var(--comic-black)}
+.checkout-form .note-box{overflow-wrap:anywhere}
+.order-totals{border-top:3px solid var(--comic-black);padding-top:12px;margin-top:14px}
+.order-totals>div{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:13px;margin:9px 0}
+.order-totals .final-total{font-size:20px;color:var(--comic-red);border-top:2px dashed #bbb;padding-top:12px}
+.fine-print{font-size:11px;line-height:1.6;color:#626262;font-weight:800}
+.orders-grid{display:grid;grid-template-columns:1fr;gap:22px}.order-card{border:3px solid var(--comic-black);background:#fff;box-shadow:5px 5px 0 var(--comic-black);padding:19px;min-width:0;transition:transform .22s ease,box-shadow .22s ease}
+.order-card:hover{transform:translate(-3px,-4px);box-shadow:8px 9px 0 var(--comic-black)}
+.order-heading{display:flex;justify-content:space-between;align-items:start;gap:12px;border-bottom:2px dashed #bbb;padding-bottom:10px;margin-bottom:13px}
+.order-heading h3{font-size:23px;margin:5px 0}.order-heading small{font-size:11px;color:#666;font-weight:800}.order-heading p{font-size:12px;margin:5px 0;color:#555}
+.order-status{padding:8px;font-size:10px;white-space:normal;max-width:165px;text-align:center}
+.status-awaiting_payment{background:#ffe7aa;color:#5b4300}.status-under_review{background:#fff2a9;color:#654500}.status-paid,.status-processing{background:#d9f1df;color:#14552f}.status-shipped{background:#d8e9ff;color:#124b81}.status-completed{background:#b8f2d0;color:#14552f}.status-cancelled{background:#eee;color:#555}
+.order-item{display:flex;gap:15px;align-items:center;border-bottom:2px dashed #ddd;padding-bottom:14px}
+.order-item>div:first-child{width:100px;height:100px;flex-shrink:0;background:#eae3d5;display:grid;place-items:center;border:2px solid var(--comic-black);font-size:27px}
+.order-item img{width:100%;height:100%;object-fit:cover}.order-item p{font-size:12px;color:#626262;font-weight:700;margin:7px 0}
+.order-total{font-size:18px!important;color:var(--comic-red)}
+.order-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:15px 0}
+.order-steps span{font-size:10px;font-weight:900;background:#eee;border:1px solid #b5b5b5;padding:9px 5px;text-align:center}
+.order-steps .step-current{background:var(--comic-yellow);border:2px solid var(--comic-black)}.order-steps .step-cancel{background:#f6c5c5}
+.order-meta p{font-size:12px;line-height:1.65;overflow-wrap:anywhere}.payment-instruction{background:#fff5cf;border:3px solid var(--comic-black);padding:14px;margin:15px 0}
+.payment-instruction>strong{font-size:16px}.payment-instruction p{font-size:12px;line-height:1.5;overflow-wrap:anywhere}
+.order-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}.order-actions .comic-btn{font-size:12px}
+.error-note{color:#aa2222;background:#ffe5e5;padding:11px;font-weight:900}.success-note{color:#1e6637;background:#e0f5e6;padding:11px;font-weight:900;font-size:13px}
+.payment-dialog{width:min(95vw,650px);border:4px solid var(--comic-black);box-shadow:10px 10px 0 var(--comic-black)}
+.payment-dialog .dialog-head{padding:15px 20px;border-bottom:3px solid var(--comic-black)}
+.payment-dialog .dialog-body{padding:24px}.payment-dialog .field small{font-size:11px;color:#666;font-weight:800;line-height:1.5}
+.qris-preview{display:block;max-width:230px;max-height:230px;object-fit:contain;background:white;border:3px solid var(--comic-black);padding:6px;margin:12px 0}
+.payment-method-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.payment-method-card{border:3px solid var(--comic-black);background:#fff;padding:16px;box-shadow:4px 4px 0 var(--comic-black);position:relative;display:grid;grid-template-columns:42px 1fr;gap:12px;transition:transform .2s ease,box-shadow .2s ease}
+.payment-method-card:hover{transform:translate(-3px,-4px);box-shadow:7px 8px 0 var(--comic-black)}
+.payment-method-card h3{margin:0 0 6px;font-size:20px}.payment-method-card p{font-size:12px;margin:5px 0;overflow-wrap:anywhere}
+.method-badge{width:42px;height:42px;background:var(--comic-yellow);border:2px solid var(--comic-black);display:grid;place-items:center;font-size:22px}
+.method-thumb{max-width:110px;max-height:110px;border:2px solid var(--comic-black);grid-column:2}
+.method-buttons{display:flex;gap:8px;grid-column:1/-1}.method-buttons .small-btn{font-size:12px;padding:9px 12px}
+.admin-page .payment-summary.stats-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.buyer-page .product-card .card-actions .red-btn{background:var(--comic-red);color:#fff}
+.buyer-page .product-card .card-actions .red-btn:hover{background:var(--comic-red-dark)}
+@media(max-width:1250px){.admin-page .stats-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.payment-method-grid{grid-template-columns:1fr}}
+@media(max-width:920px){.checkout-layout{grid-template-columns:1fr}.admin-page .stats-grid,.admin-page .payment-summary.stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:750px){.admin-page .main{padding:19px;margin-left:210px}.admin-page .sidebar{width:210px;padding:16px 10px}.admin-page .sidebar .logo{font-size:25px}.admin-page .sidebar .nav-link{font-size:12px;padding:10px}.admin-page .topbar h1{font-size:24px}}
+@media(max-width:620px){
+ .auth-shell{grid-template-columns:1fr}.auth-art{min-height:235px;padding:21px;border-right:0;border-bottom:4px solid var(--comic-black)}
+ .auth-art h1{font-size:27px}.auth-art:after{display:none}.auth-form-wrap{padding:26px 23px}
+ .admin-page .main{margin-left:0;padding:14px}.admin-page .sidebar{width:min(83vw,270px);transform:translateX(-110%);transition:transform .25s ease;z-index:110}
+ .admin-page .sidebar.menu-open{transform:translateX(0)}.admin-menu-toggle{display:flex}
+ .admin-page .topbar{gap:9px}.admin-page .topbar h1{font-size:22px}.admin-page .user-chip{padding:4px}.admin-page .user-chip strong{font-size:11px}
+ .admin-page .panel{padding:13px}.admin-page .welcome-banner:after{opacity:.25}.admin-page .welcome-banner{padding:17px}.admin-page .welcome-banner h2{font-size:27px}
+ .admin-page .stat-card{padding:12px}.order-steps{grid-template-columns:repeat(3,1fr)}.order-heading{flex-wrap:wrap}
+ .payment-method-grid{grid-template-columns:1fr}.checkout-product img{max-height:210px}
+}
+@media(max-width:420px){.admin-page .stats-grid,.admin-page .payment-summary.stats-grid{grid-template-columns:1fr 1fr}.order-actions .comic-btn{flex:1}.order-item>div:first-child{width:78px;height:78px}}
+@media(prefers-reduced-motion:reduce){.auth-shell,.auth-art:after,.admin-page .stat-card,.admin-page .panel,.admin-page .comic-btn,.admin-page .sidebar .nav-link,.order-card,.checkout-product,.payment-method-card{transition:none!important}.auth-shell:hover,.admin-page .stat-card:hover,.order-card:hover,.checkout-product:hover,.payment-method-card:hover{transform:none!important}}
+
+/* STORE SETTINGS: konsisten selebar panel Manage Figures */
+.admin-page .settings-panel {
+  width: 100%;
+  max-width: none;
+}
+
+/* Tombol pengaturan tidak menempel, tetap responsif */
+.admin-page .settings-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.admin-page .settings-actions .comic-btn {
+  margin: 0;
+}
+
+@media (max-width: 540px) {
+  .admin-page .settings-actions .comic-btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}

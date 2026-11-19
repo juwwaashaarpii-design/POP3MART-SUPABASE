@@ -1,0 +1,60 @@
+/* POP-3 MART Cart Update (Buyer only). Does not replace original style.css */
+.buyer-page .cart-nav-link{display:flex;align-items:center;gap:11px}
+.buyer-page .cart-nav-link .cart-count-badge{margin-left:auto}
+.buyer-page .cart-count-badge{display:inline-grid;place-items:center;min-width:23px;height:23px;padding:0 5px;border:2px solid #171717;border-radius:99px;background:#f4c430;color:#171717;font:900 12px/1 'Nunito',sans-serif}
+.buyer-page .cart-topbar-link{display:flex;align-items:center;justify-content:center;position:relative;min-width:39px;min-height:39px;padding:7px 12px 7px 6px;border:2px solid transparent;color:#171717;text-decoration:none;font-size:23px;transition:transform .22s,background-color .22s,border-color .22s,box-shadow .22s}
+.buyer-page .cart-topbar-link:hover,.buyer-page .cart-topbar-link:focus-visible{transform:translate(-3px,-3px);background:#f4c430;border-color:#171717;box-shadow:4px 4px 0 #171717}
+.buyer-page .cart-topbar-link .cart-count-badge{position:absolute;right:-4px;top:-7px}
+.buyer-page .product-card .card-actions.shop-card-actions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 40px;align-items:stretch;gap:8px;margin-top:16px}
+.buyer-page .product-card .shop-card-actions .heart-button{grid-column:3;grid-row:1;width:40px;min-width:0;min-height:38px}
+.buyer-page .product-card .shop-card-actions .add-cart-btn{grid-column:1/-1;grid-row:2}
+.buyer-page .product-card .card-actions.dashboard-card-actions .add-cart-btn{width:100%}
+.buyer-page .product-card .card-actions.wishlist-card-actions{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr) 40px;gap:8px}
+.buyer-page .product-card .wishlist-card-actions .heart-button{min-width:40px}
+.buyer-page .product-card .card-actions .add-cart-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:8px 10px;font-size:11px;white-space:normal}
+.buyer-page .detail-actions{display:flex;align-items:center;flex-wrap:wrap;column-gap:16px;row-gap:14px;margin-top:18px}
+.buyer-page .detail-actions .comic-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 12px;text-align:center}
+.buyer-page .detail-actions .comic-btn:disabled,.buyer-page .add-cart-btn:disabled{opacity:.6;cursor:wait;transform:none!important}
+.buyer-page .cart-intro .hero-eyebrow{margin-bottom:7px}
+.buyer-page .cart-page-actions{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.buyer-page .cart-list{display:grid;gap:16px}
+.buyer-page .cart-item{display:grid;grid-template-columns:125px minmax(0,1fr) auto;gap:18px;align-items:center;padding:17px;border:3px solid #171717;background:#fff;box-shadow:5px 5px 0 #171717;transition:transform .22s,box-shadow .22s}
+.buyer-page .cart-item:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 #171717}
+.buyer-page .cart-item-image{width:125px;height:125px;object-fit:cover;border:2px solid #171717;background:#f2eee2}
+.buyer-page .cart-item-placeholder{display:grid;place-items:center;font-size:40px;color:#164e9c}
+.buyer-page .cart-item-details{min-width:0}
+.buyer-page .cart-item-details h3{margin:5px 0 6px;font:900 23px/1.2 'Oswald',sans-serif;text-transform:uppercase}
+.buyer-page .cart-item-details p{font-size:12px;font-weight:800;color:#555;margin:4px 0}
+.buyer-page .cart-item-details strong{color:#d62828;font-size:19px}
+.buyer-page .cart-item-controls{display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+.buyer-page .cart-qty-controls{display:flex;align-items:center;gap:8px}
+.buyer-page .cart-qty-controls button{width:36px;height:36px;display:grid;place-items:center;background:#f4c430;border:2px solid #171717;font-size:18px;cursor:pointer;font-weight:900}
+.buyer-page .cart-qty-controls button:hover{background:#ffe078}
+.buyer-page .cart-qty-controls button:disabled{opacity:.45;cursor:not-allowed}
+.buyer-page .cart-qty-controls output{min-width:26px;text-align:center;font-size:16px;font-weight:1000}
+.buyer-page .cart-remove{border:2px solid #171717;background:#fff;color:#d62828;padding:8px 10px;cursor:pointer;font-size:12px;font-weight:900}
+.buyer-page .cart-remove:hover{background:#ffebeb}
+.buyer-page .cart-summary{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;border:3px solid #171717;background:#fff5cf;box-shadow:5px 5px 0 #171717;padding:18px 20px;margin-top:22px}
+.buyer-page .cart-summary .total-value{display:block;font:900 28px 'Oswald',sans-serif;color:#d62828}
+.buyer-page .cart-summary p{margin:5px 0 0;font-size:12px;color:#555}
+.buyer-page .cart-summary .comic-btn{display:inline-flex;align-items:center;gap:8px}
+.buyer-page .cart-summary .comic-btn[aria-disabled=true]{pointer-events:none;opacity:.55}
+.buyer-page .cart-warning{font-size:12px;background:#ffe0df;border:2px solid #ad2828;padding:9px;margin-top:7px;color:#842222;font-weight:800}
+.buyer-page .checkout-cart-list{display:grid;gap:12px}
+.buyer-page .checkout-cart-row{display:grid;grid-template-columns:75px 1fr;gap:13px;align-items:center;border-bottom:2px dashed #ddd;padding-bottom:12px}
+.buyer-page .checkout-cart-row img,.buyer-page .checkout-cart-row .product-placeholder{width:75px;height:75px;object-fit:cover;border:2px solid #171717}
+.buyer-page .checkout-cart-row h3{font:900 18px 'Oswald',sans-serif;margin:2px 0}
+.buyer-page .checkout-cart-row p{font-size:12px;margin:3px 0}
+.buyer-page .order-line-list{display:grid;gap:8px;margin:10px 0}
+.buyer-page .order-line{display:flex;align-items:center;gap:11px;background:#fffdf5;border:1px solid #ddd;padding:8px}
+.buyer-page .order-line img,.buyer-page .order-line .line-fallback{width:58px;height:58px;flex-shrink:0;object-fit:cover;display:grid;place-items:center;background:#eee;border:2px solid #171717}
+.buyer-page .order-line strong{display:block;font-size:13px}
+.buyer-page .order-line small{display:block;color:#555;font-weight:700}
+.admin-page .admin-order-lines{margin-top:10px;padding:11px 13px;background:#fff5cf;border:2px solid #171717}
+.admin-page .admin-order-lines strong{font-size:12px}
+.admin-page .admin-order-lines li{margin:6px 0;font-size:12px}
+@media(max-width:750px){.buyer-page .cart-item{grid-template-columns:90px minmax(0,1fr);gap:12px}.buyer-page .cart-item-image{width:90px;height:90px}.buyer-page .cart-item-controls{grid-column:1/-1;flex-direction:row;justify-content:space-between;align-items:center}.buyer-page .cart-item-details h3{font-size:19px}.buyer-page .detail-actions{gap:12px}}
+@media(max-width:420px){.buyer-page .cart-item{padding:10px}.buyer-page .cart-summary .comic-btn{width:100%;justify-content:center}.buyer-page .detail-actions .comic-btn{width:100%}.buyer-page .product-card .card-actions.shop-card-actions{grid-template-columns:1fr 1fr;gap:7px}.buyer-page .product-card .shop-card-actions .heart-button{grid-column:2;grid-row:2;justify-self:end}.buyer-page .product-card .shop-card-actions .add-cart-btn{grid-column:1;grid-row:2}.buyer-page .product-card .card-actions.wishlist-card-actions{grid-template-columns:1fr 40px}.buyer-page .wishlist-card-actions .add-cart-btn{grid-column:1}.buyer-page .wishlist-card-actions .heart-button{grid-column:2;grid-row:2}}
+@media(prefers-reduced-motion:reduce){.buyer-page .cart-item,.buyer-page .cart-topbar-link{transition:none!important}.buyer-page .cart-item:hover{transform:none!important}}
+/* Force the hidden cart subtotal to remain hidden until data is loaded. */
+.buyer-page .cart-summary[hidden]{display:none!important}

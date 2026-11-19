@@ -1,0 +1,67 @@
+/* POP-3 MART | tambahan khusus tabel figure Admin.
+   Style utama dan perbaikan halaman Store Settings tetap tidak berubah. */
+
+/* Dashboard -> Recently Added Figures: satu kolom baru untuk foto */
+.admin-page .recent-figures-table { min-width: 690px; }
+.admin-page .recent-figures-table th:first-child,
+.admin-page .recent-figures-table td.image-col { width: 106px; }
+.admin-page .recent-figure-thumb {
+  width: 78px;
+  height: 78px;
+  display: block;
+  object-fit: cover;
+  border: 3px solid var(--comic-black, #171717);
+  background: #f4ead1;
+  box-shadow: 3px 3px 0 var(--comic-black, #171717);
+  border-radius: 3px;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.admin-page .recent-figures-table tbody tr:hover .recent-figure-thumb {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--comic-black, #171717);
+}
+.admin-page .thumb-placeholder {
+  display: grid;
+  place-items: center;
+  color: var(--comic-blue, #164e9c);
+  font-size: 28px;
+}
+
+/* Manage Figures -> Product Catalog: thumbnail 112px, sebelumnya 55px */
+.admin-page .product-catalog-table { min-width: 830px; }
+.admin-page .product-catalog-table th:first-child,
+.admin-page .product-catalog-table td:first-child { width: 150px; }
+.admin-page .product-catalog-table .table-thumb {
+  display: block;
+  width: 112px;
+  height: 112px;
+  max-width: none;
+  object-fit: cover;
+  border: 3px solid var(--comic-black, #171717);
+  border-radius: 3px;
+  background: #f4ead1;
+  box-shadow: 4px 4px 0 var(--comic-black, #171717);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.admin-page .product-catalog-table tbody tr:hover .table-thumb {
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0 var(--comic-black, #171717);
+}
+.admin-page .product-catalog-table .table-thumb-empty {
+  display: grid;
+  place-items: center;
+  color: var(--comic-blue, #164e9c);
+  font-size: 34px;
+}
+
+@media (max-width: 640px) {
+  .admin-page .product-catalog-table .table-thumb { width: 92px; height: 92px; }
+  .admin-page .product-catalog-table th:first-child,
+  .admin-page .product-catalog-table td:first-child { width: 122px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .admin-page .recent-figure-thumb,
+  .admin-page .product-catalog-table .table-thumb { transition: none; }
+  .admin-page .recent-figures-table tbody tr:hover .recent-figure-thumb,
+  .admin-page .product-catalog-table tbody tr:hover .table-thumb { transform: none; }
+}

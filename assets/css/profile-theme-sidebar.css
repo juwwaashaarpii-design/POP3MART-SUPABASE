@@ -1,0 +1,163 @@
+/* POP-3 MART | Account, Appearance & Sidebar Update 2026-11-19
+   Import AFTER style.css. Does not overwrite the original comic palette in light mode. */
+
+/* Profile editor */
+.account-profile-panel,.admin-appearance-panel{width:100%;max-width:none}
+.avatar-edit{display:flex;align-items:center;flex-wrap:wrap;gap:28px;padding:20px;margin:15px 0 26px;border:3px solid var(--comic-black);background:rgba(244,196,48,.11)}
+.avatar-preview{width:118px;height:118px;flex:0 0 118px;border-radius:50%;border:4px solid var(--comic-black);box-shadow:5px 5px 0 var(--comic-black);background:var(--comic-yellow);color:var(--comic-black);display:grid;place-items:center;overflow:hidden;font:700 58px Impact,'Oswald',sans-serif}
+.avatar-preview img{display:block;width:100%;height:100%;object-fit:cover;border-radius:50%}
+.avatar-edit-controls{flex:1 1 230px;display:flex;align-items:flex-start;flex-direction:column;gap:9px;min-width:0}
+.avatar-upload-label,.avatar-remove-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:9px 14px;border:3px solid var(--comic-black);font-size:12px;font-weight:1000;cursor:pointer;box-shadow:4px 4px 0 var(--comic-black);transition:transform .2s ease,box-shadow .2s ease}
+.avatar-upload-label{background:var(--comic-yellow);color:var(--comic-black)}
+.avatar-remove-btn{background:#fae2e2;color:#812020}
+.avatar-upload-label:hover,.avatar-remove-btn:hover{transform:translate(-3px,-3px);box-shadow:7px 7px 0 var(--comic-black)}
+#avatar-file{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}#avatar-file:focus-visible + .avatar-remove-btn{outline:3px solid var(--comic-yellow)}
+.avatar-edit .small-note{font-size:11px;margin:0;line-height:1.6}
+/* Applies to little header images and buyer's large cover image */
+.avatar,.profile-img,.cover-avatar{overflow:hidden}
+.avatar img,.profile-img img,.cover-avatar img{display:block;width:100%;height:100%;object-fit:cover;border-radius:50%}
+.user-chip[href]{color:inherit;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}
+.user-chip[href]:hover{transform:translate(-2px,-3px);box-shadow:5px 6px 0 var(--comic-black)}
+/* Theme controls */
+.theme-setting-row{display:flex;align-items:center;justify-content:space-between;gap:20px;border:2px solid var(--comic-black);padding:17px 18px;margin:8px 0 23px;background:rgba(244,196,48,.10)}
+.theme-setting-row label strong{display:block;font-weight:1000;font-size:15px}
+.theme-setting-row label small{display:block;font-size:12px;line-height:1.5;color:var(--gray);font-weight:800;margin-top:5px}
+.theme-setting-row select{min-width:175px;max-width:100%;padding:11px 14px;font-size:13px;font-weight:900;background:#fff;border:3px solid var(--comic-black);box-shadow:3px 3px 0 var(--comic-yellow);color:var(--comic-black)}
+.theme-quick-toggle{display:grid;place-items:center;flex:0 0 40px;width:40px;height:40px;border:3px solid var(--comic-black);background:var(--comic-yellow);color:var(--comic-black);font-size:19px;box-shadow:3px 3px 0 var(--comic-black);transition:transform .18s,box-shadow .18s}
+.theme-quick-toggle:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--comic-black)}
+.admin-page .theme-quick-toggle{margin-left:auto}
+.admin-page .user-chip{flex-shrink:0}
+
+/* Sidebar: functional desktop collapse via existing hamburger; mobile remains full overlay. */
+@media(min-width:621px){
+  .buyer-page .mobile-menu-toggle,.admin-menu-toggle{display:inline-flex!important;align-items:center;justify-content:center;flex-shrink:0;width:42px;height:42px;background:var(--comic-yellow);border:3px solid var(--comic-black);color:var(--comic-black);font-size:23px;box-shadow:2px 2px 0 var(--comic-black);border-radius:3px}
+  .buyer-page .sidebar,.buyer-page .main,.admin-page .sidebar,.admin-page .main{transition:width .25s ease,margin-left .25s ease,padding .25s ease}
+  .buyer-page.sidebar-collapsed .sidebar,.admin-page.sidebar-collapsed .sidebar{width:79px!important;padding-left:8px!important;padding-right:8px!important;overflow-x:hidden}
+  .buyer-page.sidebar-collapsed .main,.admin-page.sidebar-collapsed .main{margin-left:79px!important}
+  .buyer-page.sidebar-collapsed .sidebar .logo,.admin-page.sidebar-collapsed .sidebar .logo{font-size:0!important;text-shadow:none!important;letter-spacing:0;margin-bottom:28px;overflow:hidden;white-space:nowrap}
+  .buyer-page.sidebar-collapsed .sidebar .logo span,.admin-page.sidebar-collapsed .sidebar .logo span{display:none}
+  .buyer-page.sidebar-collapsed .sidebar .logo::before,.admin-page.sidebar-collapsed .sidebar .logo::before{content:'P3';font:900 25px Impact,'Oswald',sans-serif;color:var(--comic-yellow);text-shadow:3px 3px 0 var(--comic-black)}
+  .buyer-page.sidebar-collapsed .sidebar .menu-title,.admin-page.sidebar-collapsed .sidebar .menu-title{display:none}
+  .buyer-page.sidebar-collapsed .sidebar .nav-list,.admin-page.sidebar-collapsed .sidebar .nav-list{gap:8px;margin-top:12px}
+  .buyer-page.sidebar-collapsed .sidebar .nav-link,.admin-page.sidebar-collapsed .sidebar .nav-link{font-size:0!important;letter-spacing:0;gap:0!important;justify-content:center;padding:10px 0!important;min-height:49px;margin-bottom:0;overflow:hidden;white-space:nowrap}
+  .buyer-page.sidebar-collapsed .sidebar .nav-link i,.admin-page.sidebar-collapsed .sidebar .nav-link i{font-size:22px!important;flex:0 0 auto;width:auto!important;margin:0!important}
+  .buyer-page.sidebar-collapsed .sidebar .nav-link span:not(.cart-count-badge){display:none}
+  .buyer-page.sidebar-collapsed .sidebar .cart-count-badge{display:none}
+  .admin-page.sidebar-collapsed .sidebar .sidebar-bottom,.buyer-page.sidebar-collapsed .sidebar .sidebar-bottom{margin-top:auto}
+}
+@media(max-width:620px){
+  .buyer-page .mobile-menu-toggle,.admin-page .admin-menu-toggle{display:inline-flex!important;align-items:center;justify-content:center;flex:0 0 36px;height:37px;background:var(--comic-yellow);color:var(--comic-black);border:2px solid var(--comic-black);font-size:22px;border-radius:3px}
+  .admin-page .sidebar{position:fixed!important;height:100dvh;inset:0 auto 0 0;display:flex;flex-direction:column;overflow-y:auto;box-shadow:5px 0 0 var(--comic-black)}
+  .admin-page .sidebar .menu-title,.admin-page .sidebar .sidebar-bottom{display:block}
+  .admin-page .sidebar .nav-list{display:flex;flex-direction:column;overflow:visible}
+  .admin-page .sidebar .nav-link{font-size:14px;white-space:normal}
+  .admin-page .admin-menu-scrim:not([hidden]){display:block}
+  .admin-page .topbar{align-items:center;flex-wrap:wrap}
+  .admin-page .topbar > div:first-of-type{flex:1 1 130px}
+  .admin-page .theme-quick-toggle{margin-left:0}
+  .admin-page .user-chip{max-width:calc(100vw - 65px)}
+  .theme-setting-row{flex-direction:column;align-items:stretch;padding:15px}
+  .theme-setting-row select{width:100%}
+  .avatar-preview{width:95px;height:95px;flex-basis:95px;font-size:46px}
+  .avatar-edit{gap:18px;padding:16px}
+}
+
+/* Dark Mode: keep the original blue sidebar, yellow active tabs, red banners and BLACK comic outlines. */
+html[data-theme="dark"]{
+  --paper:#141c28;--comic-paper:#141c28;--white:#252e3c;--comic-white:#252e3c;
+  --gray:#b9c2ce;--comic-gray:#bac3cc;
+  color-scheme:dark;
+}
+html[data-theme="dark"] body{background-color:#141c28;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);color:#f8f3e8}
+html[data-theme="dark"] .panel,
+html[data-theme="dark"] .stat-card,
+html[data-theme="dark"] .user-chip,
+html[data-theme="dark"] .topbar,
+html[data-theme="dark"] dialog,
+html[data-theme="dark"] .notice-popover{background:#252e3c;color:#faf5e9}
+html[data-theme="dark"] .page-subtitle,
+html[data-theme="dark"] .user-chip small,
+html[data-theme="dark"] .stat-label,
+html[data-theme="dark"] .stat-hint,
+html[data-theme="dark"] .small-note,
+html[data-theme="dark"] .field small,
+html[data-theme="dark"] .fine-print,
+html[data-theme="dark"] .buyer-page .product-description,
+html[data-theme="dark"] .buyer-page .eyebrow,
+html[data-theme="dark"] .buyer-page .profile-link small,
+html[data-theme="dark"] .buyer-page .stat-label,
+html[data-theme="dark"] .footer-note{color:#b9c4d4!important}
+html[data-theme="dark"] .field input,
+html[data-theme="dark"] .field textarea,
+html[data-theme="dark"] .field select,
+html[data-theme="dark"] .filter-control,
+html[data-theme="dark"] .search-box,
+html[data-theme="dark"] .global-search-form,
+html[data-theme="dark"] .theme-setting-row select{background:#172232;color:#f9f5ea}
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder{color:#a7b4c8;opacity:1}
+html[data-theme="dark"] input[readonly]{background:#202b38}
+html[data-theme="dark"] .avatar-edit,
+html[data-theme="dark"] .theme-setting-row{background:#303748}
+html[data-theme="dark"] .theme-setting-row label small{color:#c6d1df}
+html[data-theme="dark"] .admin-page .data-table td,
+html[data-theme="dark"] .buyer-page .data-table td{border-color:#455367;color:#f6f2e8}
+html[data-theme="dark"] .buyer-page .data-table th{color:#f3f0e6;border-color:#657186}
+html[data-theme="dark"] .admin-page .data-table tbody tr:hover{background:#3b4552}
+html[data-theme="dark"] .admin-page .mini-order,
+html[data-theme="dark"] .order-card,
+html[data-theme="dark"] .checkout-form,
+html[data-theme="dark"] .checkout-product,
+html[data-theme="dark"] .payment-method-card,
+html[data-theme="dark"] .buyer-page .product-card,
+html[data-theme="dark"] .buyer-page .empty-state,
+html[data-theme="dark"] .empty-state,
+html[data-theme="dark"] .buyer-page .profile-form,
+html[data-theme="dark"] .buyer-page .collection-tile{
+  background:#283446;color:#f7f4ec;
+}
+html[data-theme="dark"] .admin-page .mini-order:hover,
+html[data-theme="dark"] .order-card:hover{background:#333f50}
+html[data-theme="dark"] .buyer-page .product-card h3,
+html[data-theme="dark"] .buyer-page .panel h2,
+html[data-theme="dark"] .admin-page .panel h2{color:#f9f4e8}
+html[data-theme="dark"] .buyer-page .notice-popover strong,
+html[data-theme="dark"] .section-link,
+html[data-theme="dark"] .buyer-page .stat-hint i{color:#9bc6ff}
+html[data-theme="dark"] .buyer-page .product-meta strong,
+html[data-theme="dark"] .checkout-price,
+html[data-theme="dark"] .order-total,
+html[data-theme="dark"] .total-value{color:#ff7676}
+html[data-theme="dark"] .buyer-page .product-card .stock-pill{color:#fff}
+html[data-theme="dark"] .buyer-page .comic-footer,
+html[data-theme="dark"] .buyer-page .footer-bottom{background:#101010;color:#fff}
+html[data-theme="dark"] .buyer-page .footer-links a{color:#dedede}
+html[data-theme="dark"] .buyer-page .footer-links a:hover{color:var(--comic-yellow)}
+html[data-theme="dark"] .buyer-page .sidebar .nav-link.active,
+html[data-theme="dark"] .admin-page .sidebar .nav-link.active{color:var(--comic-black)}
+html[data-theme="dark"] .buyer-page .welcome-banner,
+html[data-theme="dark"] .admin-page .welcome-banner,
+html[data-theme="dark"] .buyer-page .shop-hero,
+html[data-theme="dark"] .buyer-page .page-intro,
+html[data-theme="dark"] .buyer-page .profile-cover{color:#fff}
+/* Backgrounds which remain intentionally light require explicit dark text. */
+html[data-theme="dark"] .note-box,
+html[data-theme="dark"] .payment-instruction,
+html[data-theme="dark"] .status-pill,
+html[data-theme="dark"] .stock-pill,
+html[data-theme="dark"] .stat-icon,
+html[data-theme="dark"] .small-btn,
+html[data-theme="dark"] .yellow-btn,
+html[data-theme="dark"] .avatar-upload-label{color:#171717}
+html[data-theme="dark"] .status-active,
+html[data-theme="dark"] .status-paid,
+html[data-theme="dark"] .status-processing{color:#14552f}
+html[data-theme="dark"] .toast-message{color:#171717}
+html[data-theme="dark"] .buyer-page .toggle-setting{border-color:#566476}
+html[data-theme="dark"] .admin-page .panel a:not(.comic-btn),
+html[data-theme="dark"] .buyer-page .panel a.text-link{color:#92c3ff}
+html[data-theme="dark"] .admin-page .panel .yellow-btn,
+html[data-theme="dark"] .buyer-page .panel .yellow-btn{color:#171717!important}
+html[data-theme="dark"] .admin-page .panel .blue-btn,
+html[data-theme="dark"] .buyer-page .panel .blue-btn{color:#fff!important}
+@media(prefers-reduced-motion:reduce){.sidebar,.main,.avatar-upload-label,.avatar-remove-btn,.theme-quick-toggle{transition:none!important}}

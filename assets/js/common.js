@@ -32,10 +32,30 @@ export async function getProfile() {
   if (userError || !user) return { user: null, profile: null, error: userError };
   const { data: profile, error } = await supabase
     .from("profiles")
-    .select("id,email,full_name,phone,address,role")
+    .select("id,email,full_name,display_name,avatar_path,phone,address,role")
     .eq("id", user.id)
     .single();
   return { user, profile, error };
+}
+
+
+export function paintUserIdentity(profile, user) {
+  const name = (profile?.display_name || profile?.full_name || user?.email || "Pengguna").trim();
+  const initial = name.charAt(0).toUpperCase();
+  document.querySelectorAll("[data-user-name]").forEach(el => el.textContent = name);
+  document.querySelectorAll("[data-user-email]").forEach(el => el.textContent = user?.email || "");
+  document.querySelectorAll("[data-user-role]").forEach(el => el.textContent = profile?.role === "admin" ? "Administrator" : "Buyer");
+  const path = profile?.avatar_path;
+  const url = path ? supabase.storage.from("profile-avatars").getPublicUrl(path).data.publicUrl : null;
+  document.querySelectorAll("[data-user-initial]").forEach(el => {
+    el.replaceChildren();
+    if (url) {
+      const img = document.createElement("img");
+      img.src = url; img.alt = `Foto profil ${name}`; img.loading = "lazy";
+      img.onerror = () => {if (el.contains(img)) el.textContent=initial;};
+      el.append(img);
+    } else el.textContent = initial;
+  });
 }
 
 export async function requireRole(role) {
@@ -55,10 +75,7 @@ export async function requireRole(role) {
     location.replace(profile.role === "admin" ? "../admin/dashboard.html" : "../buyer/dashboard.html");
     return null;
   }
-  document.querySelectorAll("[data-user-name]").forEach(el => el.textContent = profile.full_name || user.email);
-  document.querySelectorAll("[data-user-email]").forEach(el => el.textContent = user.email || "");
-  document.querySelectorAll("[data-user-role]").forEach(el => el.textContent = profile.role === "admin" ? "Administrator" : "Buyer");
-  document.querySelectorAll("[data-user-initial]").forEach(el => el.textContent = (profile.full_name || user.email || "P").trim().charAt(0).toUpperCase());
+  paintUserIdentity(profile, user);
   return { user, profile };
 }
 
